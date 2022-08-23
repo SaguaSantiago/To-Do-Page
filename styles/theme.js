@@ -3,11 +3,13 @@ import { createTheme } from '@mui/material/styles'
 export const theme = createTheme({
   palette: {
     primary: {
-      main: '#ff4400',
+      light: '#gA8DADC',
+      main: '#457B9D',
+      dark: '#1D3557',
     },
     secondary: {
       light: '#0066ff',
-      main: '#0044ff',
+      main: '#111F33',
       contrastText: '#ffcc00',
     },
     neutral: {
@@ -20,7 +22,7 @@ export const theme = createTheme({
     tonalOffset: 0.2,
   },
   typography: {
-    fontFamily: 'Raleway, Arial',
+    fontFamily: 'Raleway, sans-serif',
   },
   // components: {
   //   MuiCssBaseline: {
