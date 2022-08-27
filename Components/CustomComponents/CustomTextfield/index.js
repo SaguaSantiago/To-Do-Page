@@ -30,11 +30,13 @@ export default function CustomTextfield({ label, placeholder, ...props }) {
         sx={{ marginTop: '20px' }}
         placeholder={placeholder ? placeholder : ''}
         label={label ? label : ''}
-        inputProps={{ notched: true }}
+        inputProps={{ notched: 'true' }}
         InputLabelProps={{ shrink: true }}
         fullWidth
       />
-      <FormHelperText error>{meta.error}</FormHelperText>
+      <FormHelperText sx={{ height: '20px' }} error>
+        {meta.touched && meta.error ? meta.error : null}
+      </FormHelperText>
     </>
   )
 }

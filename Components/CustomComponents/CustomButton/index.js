@@ -1,10 +1,11 @@
 import { Button, styled } from '@mui/material'
 
 const StyledButton = styled(Button)(
-  ({ theme }) => `
+  ({ theme, spacing }) => `
       color:${theme.palette.primary.dark};
       border-color: ${theme.palette.primary.dark};
-      border-radius: 2px
+      border-radius: 2px;
+      letter-spacing: ${spacing ? spacing : ''}
     `,
 )
 
