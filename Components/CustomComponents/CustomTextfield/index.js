@@ -31,7 +31,7 @@ export default function CustomTextfield({ label, placeholder, ...props }) {
         placeholder={placeholder ? placeholder : ''}
         label={label ? label : ''}
         inputProps={{ notched: 'true' }}
-        InputLabelProps={{ shrink: true }}
+        InputLabelProps={{ shrink: true, color: 'secondary' }}
         fullWidth
       />
       <FormHelperText sx={{ height: '20px' }} error>
