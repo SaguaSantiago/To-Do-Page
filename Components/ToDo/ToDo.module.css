@@ -1,0 +1,7 @@
+.ToDoOpen {
+    width: calc(51% + 40px);
+}
+
+.deleteButton {
+    display: none;
+}
