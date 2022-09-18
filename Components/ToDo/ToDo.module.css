@@ -1,7 +1,46 @@
-.ToDoOpen {
-    width: calc(51% + 40px);
+.ToDoClosed {
+    max-height: 0;
+    overflow: hidden;
 }
 
-.deleteButton {
-    display: none;
+.StyledDiv {
+    display: flex;
+    justify-content: center;
+    margin: 250px auto 0 auto;
+    gap: 1%;
+}
+
+.StyledPaper {
+    background-color: #a8dadc;
+    position: relative;
+    height: 50px;
+    min-width: 288px;
+    transition: width 1s;
+    width: 50%;
+    left: auto;
+    right: auto;
+}
+
+.ToDoTitle {
+    margin-left: 10px;
+    font-weight: 600;
+}
+
+.ActionArea {
+    margin-left: auto;
+    display: flex;
+    justify-content: flex-end;
+    gap: 2px;
+}
+
+.ActionButton {
+    height: 30px;
+    width: 30px;
+    background-color: var(--white-fondo);
+    margin-left: 5px;
+}
+
+.ToDoOpen {
+    max-height: 500px;
+    overflow: hidden;
 }
