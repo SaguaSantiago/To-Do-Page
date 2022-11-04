@@ -26,7 +26,7 @@ export default function CustomTextfield({ label, placeholder, ...props }) {
       <StyledOutlinedInput
         {...field}
         {...props}
-        error={meta.touched && meta.error}
+        error={meta.touched && Boolean(meta.error)}
         sx={{ marginTop: '20px' }}
         placeholder={placeholder ? placeholder : ''}
         label={label ? label : ''}

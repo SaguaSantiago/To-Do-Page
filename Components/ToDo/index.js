@@ -1,18 +1,7 @@
 import { Grid, IconButton, Paper, styled, Typography } from '@mui/material'
 import styles from './ToDo.module.css'
-import { Check } from '@mui/icons-material'
 import useToggle from 'hooks/useToggle'
 import ActionPaper from './ActionArea'
-
-const CheckButton = styled(IconButton)`
-  background-color: white;
-  height: 22px;
-  width: 22px;
-  border-radius: 2px;
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-`
 function StyledDiv({ children, ...rest }) {
   return (
     <div {...rest} className={styles.StyledDiv}>
@@ -37,27 +26,28 @@ function ToDoTitle({ children, ...rest }) {
   )
 }
 
-export default function ToDo() {
-  const [isSelected, setIsSelected] = useToggle()
+export default function ToDo(props) {
+  const { title, desc, priority, id } = props
   const [toDoOpen, setToDoOpen] = useToggle()
-
   return (
-    <Grid container justifyContent='center' sx={{ width: '100%', height: '100vh' }}>
+    <Grid container justifyContent='center' sx={{ width: '100%' }}>
       <Grid item xs={12} md={7}>
         <StyledDiv>
           <StyledPaper sx={{ padding: '0 10px' }}>
             <Grid sx={{ height: '100%' }} container alignItems='center'>
               <Grid item>
-                <CheckButton onClick={setIsSelected}>{isSelected && <Check />}</CheckButton>
+                <ToDoTitle>{title}</ToDoTitle>
               </Grid>
-              <Grid item>
-                <ToDoTitle>Esto es un To Do</ToDoTitle>
-              </Grid>
-              <ActionPaper isOpen={toDoOpen} openAction={setToDoOpen} />
+              <ActionPaper
+                priority={priority}
+                toDo={props}
+                isOpen={toDoOpen}
+                openAction={setToDoOpen}
+              />
             </Grid>
           </StyledPaper>
         </StyledDiv>
-        <Grid sx={{ margin: '0 auto' }} xs={12} md={6} item>
+        <Grid sx={{ margin: '0 auto', width: '100%' }} item>
           <Paper
             className={toDoOpen ? styles.ToDoOpen : styles.ToDoClosed}
             sx={{
@@ -67,9 +57,7 @@ export default function ToDo() {
             }}
             elevation={1}
           >
-            <Typography paragraph>
-              asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd
-            </Typography>
+            <Typography paragraph>{desc}</Typography>
           </Paper>
         </Grid>
       </Grid>

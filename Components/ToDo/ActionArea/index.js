@@ -7,6 +7,10 @@ import {
   CheckCircleOutline,
   ExpandLess,
 } from '@mui/icons-material'
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder'
+import BookmarkIcon from '@mui/icons-material/Bookmark'
+import { addPriority, removePriority, removeToDo } from 'redux/Actions/toDo'
+import { useDispatch, useSelector } from 'react-redux'
 
 function ActionArea({ children, ...rest }) {
   return (
@@ -24,11 +28,18 @@ function ActionButton({ children, ...rest }) {
   )
 }
 
-export default function ActionPaper({ openAction, isOpen }) {
+export default function ActionPaper({ openAction, isOpen, priority, toDo }) {
+  const dispatch = useDispatch()
+  const state = useSelector((state) => state.toDos)
+  const priorityToggle = () => {
+    if (!priority) dispatch(addPriority(state, toDo))
+    else dispatch(removePriority(state, toDo))
+  }
+
   return (
     <ActionArea item sm={4}>
-      <ActionButton onClick={null}>
-        <EditOutlined />
+      <ActionButton onClick={priorityToggle}>
+        {priority ? <BookmarkIcon /> : <BookmarkBorderIcon />}
       </ActionButton>
 
       <ActionButton onClick={null}>
@@ -37,7 +48,7 @@ export default function ActionPaper({ openAction, isOpen }) {
 
       <ActionButton onClick={openAction}>{isOpen ? <ExpandLess /> : <ExpandMore />}</ActionButton>
 
-      <ActionButton onClick={null}>
+      <ActionButton onClick={() => dispatch(removeToDo(state, toDo))}>
         <DeleteOutline />
       </ActionButton>
 

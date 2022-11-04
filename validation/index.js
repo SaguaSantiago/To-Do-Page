@@ -21,3 +21,8 @@ export const RegisterValidation = yup.object({
     .required('Este campo es obligatorio')
     .oneOf([yup.ref('password'), null], 'Passwords must match'),
 })
+
+export const NewToDoFormValidation = yup.object({
+  title: yup.string().required('Es necesario que tenga un título'),
+  desc: yup.string().required('Añade una pequeña descripción'),
+})

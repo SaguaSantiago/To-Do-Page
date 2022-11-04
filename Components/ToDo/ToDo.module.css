@@ -6,8 +6,8 @@
 .StyledDiv {
     display: flex;
     justify-content: center;
-    margin: 250px auto 0 auto;
     gap: 1%;
+    width: 100%;
 }
 
 .StyledPaper {
@@ -16,7 +16,7 @@
     height: 50px;
     min-width: 288px;
     transition: width 1s;
-    width: 50%;
+    width: 100%;
     left: auto;
     right: auto;
 }
