@@ -52,6 +52,7 @@ export default function CustomPaperPage({ image, isLogin, children, validationSc
                       <StyledDiv>
                         <CustomButton
                           spacing='2px'
+                          type='submit'
                           fullWidth
                           color='primary'
                           variant='outlined'

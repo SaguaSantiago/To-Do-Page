@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux'
-
-import auth from './Auth'
+import toDos from './ToDos'
+import filter from './Filters'
 
 export default combineReducers({
-  auth,
+  toDos,
+  filter,
 })
