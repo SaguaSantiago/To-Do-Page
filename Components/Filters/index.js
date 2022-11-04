@@ -1,43 +1,11 @@
-import { Avatar, Grid, Paper, Typography, styled, Button } from '@mui/material'
-import SortIcon from '@mui/icons-material/Sort'
-import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder'
 import { useDispatch, useSelector } from 'react-redux'
 import { setFilterAll, setFilterPriority } from 'redux/Actions/Filters'
 
-const StyledPaper = styled(Paper)(
-  ({ theme }) => `
-    background-color: ${theme.palette.primary.main};
-    max-width: 320px;
-    height: 95px;
-    position: relative;
-    margin: 0 auto;
-`,
-)
+import { Avatar, Grid, Typography } from '@mui/material'
+import SortIcon from '@mui/icons-material/Sort'
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder'
 
-const FilterButton = styled(Button)`
-  height: 60px;
-  border: none;
-  background-color: transparent;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 3px;
-  margin: 0 auto;
-  padding: 0;
-`
-
-const WhiteLine = styled('div')(
-  ({ filterstate }) => `
-  width: 40%;
-  height: 1px;
-  background-color: white;
-  position: absolute;
-  bottom: 5px;
-  transition: all 0.5s;
-  left: ${filterstate === 'all' ? '3px' : 'calc(60% - 3px)'};
-`,
-)
+import { FilterButton, StyledPaper, WhiteLine } from './StyledComponents'
 
 export default function Filters() {
   const dispatch = useDispatch()

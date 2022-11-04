@@ -1,15 +1,16 @@
-// import CustomButton from 'Components/CustomComponents/CustomButton'
-// import ToDo from 'Components/ToDo'
+import { useEffect } from 'react'
+import useToggle from 'hooks/useToggle'
+import useStartApp from 'hooks/useStartApp'
+
 import { useSelector } from 'react-redux'
-import { Grid, styled, Paper } from '@mui/material'
+
+import { Grid, styled } from '@mui/material'
+import { sharingInformationService } from 'services/sharing-information'
+
 import Filters from 'Components/Filters'
 import SearchBar from 'Components/SearchBar'
 import ToDo from 'Components/ToDo'
 import NewToDoForm from 'Components/NewToDoForm'
-import { sharingInformationService } from 'services/sharing-information'
-import useToggle from 'hooks/useToggle'
-import { useEffect } from 'react'
-import useStartApp from 'hooks/useStartApp'
 
 const ToDosContainer = styled(Grid)(
   ({ theme }) => `

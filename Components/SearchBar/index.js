@@ -1,38 +1,10 @@
-import { Grid, IconButton, Paper, styled, TextField } from '@mui/material'
+import { Grid } from '@mui/material'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 import SearchIcon from '@mui/icons-material/Search'
+
 import { sharingInformationService } from 'services/sharing-information'
 
-const SearchTextfield = styled(TextField)`
-  & .MuiOutlinedInput-root {
-    height: 40px;
-    border-radius: 10px;
-    background-color: #fff;
-    padding: 5px;
-  }
-`
-
-const PaperContainer = styled(Paper)(
-  ({ theme }) => `
-    min-width: 320px;
-    width: 30%;
-    margin: 50px auto;
-    padding: 0 40px;
-    border-radius: 10px;
-    height: 80px;
-    background-color: ${theme.palette.primary.dark};
-`,
-)
-
-const StyledIconButton = styled(IconButton)(
-  ({ theme }) => `
-    border-radius: 10px;
-    background-color: #fff;
-    &:hover {
-    background-color: ${theme.palette.primary.main + 'ff'}
-    }
-`,
-)
+import { PaperContainer, SearchTextfield, StyledIconButton } from './StyledComponents'
 
 export default function SearchBar() {
   return (
