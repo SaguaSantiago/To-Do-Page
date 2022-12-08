@@ -5,7 +5,9 @@ import useStartApp from 'hooks/useStartApp'
 import { useSelector } from 'react-redux'
 
 import { Grid, styled } from '@mui/material'
-import { sharingInformationService } from 'services/sharing-information'
+import { createToDoService } from 'services/sharing-information'
+
+import { ToastContainer } from 'react-toastify'
 
 import Filters from 'Components/Filters'
 import SearchBar from 'Components/SearchBar'
@@ -26,17 +28,19 @@ const ToDoList = styled(Grid)`
   display: flex;
   flex-direction: column-reverse;
   gap: 15px;
+  overflow: auto;
+  max-height: calc(70vh - 145px);
 `
 
 export default function MainRoute() {
   const toDos = useSelector((state) => state.toDos)
   const filter = useSelector((state) => state.filter)
   const [isAdding, setIsAdding] = useToggle()
-  const Suscription$ = sharingInformationService.getSubject()
+  const createToDoSuscription$ = createToDoService.getSubject()
   useStartApp()
 
   useEffect(() => {
-    Suscription$.subscribe((data) => {
+    createToDoSuscription$.subscribe((data) => {
       if (!!data) {
         setIsAdding(true)
       } else setIsAdding(false)
@@ -55,16 +59,38 @@ export default function MainRoute() {
             <Grid item xs={12}>
               <Filters />
             </Grid>
-            <ToDoList item xs={12}>
-              {toDos.allTodos &&
-                filter === 'all' &&
-                toDos.allTodos.map((props) => <ToDo key={props.id} {...props} />)}
-              {toDos.priorities &&
-                toDos.priorities.map((props) => <ToDo key={props.id} {...props} />)}
+            <ToDoList item xs={11}>
+              {toDos.searched.allTodos !== undefined
+                ? toDos.searched.allTodos.map((props) => <ToDo key={props.id} {...props} />)
+                : toDos.allTodos &&
+                  filter === 'all' &&
+                  toDos.allTodos.map((props) => <ToDo key={props.id} {...props} />)}
+              {toDos.searched.allTodos !== undefined
+                ? toDos.searched.priorities.map((props) => <ToDo key={props.id} {...props} />)
+                : toDos.priorities &&
+                  filter !== 'ready' &&
+                  toDos.priorities.map((props) => <ToDo key={props.id} {...props} />)}
+              {toDos.searched.allTodos !== undefined
+                ? toDos.searched.ready.map((props) => <ToDo key={props.id} {...props} />)
+                : toDos.priorities &&
+                  filter === 'ready' &&
+                  toDos.ready.map((props) => <ToDo key={props.id} {...props} />)}
             </ToDoList>
           </Grid>
         </ToDosContainer>
       </Grid>
+      <ToastContainer
+        position='top-right'
+        autoClose={2500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        theme='light'
+      />
     </>
   )
 }

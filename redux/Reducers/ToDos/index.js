@@ -5,6 +5,7 @@ const initialState = {
   allTodos: [],
   priorities: [],
   ready: [],
+  searched: {},
 }
 
 const toDos = (state = initialState, { type, payload }) => {
@@ -39,10 +40,7 @@ const toDos = (state = initialState, { type, payload }) => {
         loading: true,
       }
     case ActionTypes.ADD_PRIORITY_SUCCESS:
-      return {
-        ...payload,
-        loading: false,
-      }
+      return { ...state, ...payload, loading: false }
     case ActionTypes.ADD_PRIORITY_FAILURE:
       return {
         ...state,
@@ -56,7 +54,7 @@ const toDos = (state = initialState, { type, payload }) => {
         loading: true,
       }
     case ActionTypes.REMOVE_TODO_SUCCESS:
-      return { ...payload, loading: false }
+      return { ...state, ...payload, loading: false }
     case ActionTypes.REMOVE_PRIORITY_FAILURE:
       return {
         ...state,
@@ -67,9 +65,42 @@ const toDos = (state = initialState, { type, payload }) => {
     case ActionTypes.REMOVE_PRIORITY_REQUEST:
       return { ...payload, loading: true }
     case ActionTypes.REMOVE_PRIORITY_SUCCESS:
-      return { ...payload, loading: false }
+      return {
+        ...state,
+        priorities: payload.priorities,
+        allTodos: payload.allTodos,
+        loading: false,
+      }
     case ActionTypes.REMOVE_PRIORITY_FAILURE:
       return { ...state, loading: false }
+
+    //ready
+
+    case ActionTypes.SET_READY_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      }
+
+    case ActionTypes.SET_READY_SUCCESS:
+      return {
+        ...state,
+        ...payload,
+        loading: false,
+      }
+
+    case ActionTypes.SET_READY_FAILURE:
+      return {
+        ...state,
+        loading: false,
+      }
+
+    case ActionTypes.SEARCHE_TODOS:
+      return {
+        ...state,
+        searched: { ...payload },
+      }
+
     default:
       return state
   }

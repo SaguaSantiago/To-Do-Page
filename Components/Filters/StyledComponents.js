@@ -25,12 +25,12 @@ export const FilterButton = styled(Button)`
 
 export const WhiteLine = styled('div')(
   ({ filterstate }) => `
-    width: 40%;
+    width: 25%;
     height: 1px;
     background-color: white;
     position: absolute;
     bottom: 5px;
     transition: all 0.5s;
-    left: ${filterstate === 'all' ? '3px' : 'calc(60% - 3px)'};
+    left: ${filterstate === 'all' ? '3px' : filterstate === 'ready' ? 'calc(75% - 3px)' : '37%'};
   `,
 )

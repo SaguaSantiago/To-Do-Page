@@ -1,34 +1,17 @@
-import styles from '../ToDo.module.css'
-import { Grid, IconButton } from '@mui/material'
 import {
   DeleteOutline,
-  EditOutlined,
   ExpandMore,
   CheckCircleOutline,
   ExpandLess,
 } from '@mui/icons-material'
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder'
 import BookmarkIcon from '@mui/icons-material/Bookmark'
-import { addPriority, removePriority, removeToDo } from 'redux/Actions/toDo'
+import { addPriority, removePriority, removeToDo, setReady } from 'redux/Actions/toDo'
+import { ActionButton, ActionArea } from '../styledComponents'
+
 import { useDispatch, useSelector } from 'react-redux'
 
-function ActionArea({ children, ...rest }) {
-  return (
-    <Grid className={styles.ActionArea} {...rest}>
-      {children}
-    </Grid>
-  )
-}
-
-function ActionButton({ children, ...rest }) {
-  return (
-    <IconButton {...rest} className={styles.ActionButton}>
-      {children}
-    </IconButton>
-  )
-}
-
-export default function ActionPaper({ openAction, isOpen, priority, toDo }) {
+export default function ActionPaper({ openAction, isOpen, priority, toDo, deleteAction }) {
   const dispatch = useDispatch()
   const state = useSelector((state) => state.toDos)
   const priorityToggle = () => {
@@ -42,19 +25,15 @@ export default function ActionPaper({ openAction, isOpen, priority, toDo }) {
         {priority ? <BookmarkIcon /> : <BookmarkBorderIcon />}
       </ActionButton>
 
-      <ActionButton onClick={null}>
+      <ActionButton onClick={() => dispatch(setReady(state, toDo))}>
         <CheckCircleOutline />
       </ActionButton>
 
       <ActionButton onClick={openAction}>{isOpen ? <ExpandLess /> : <ExpandMore />}</ActionButton>
 
-      <ActionButton onClick={() => dispatch(removeToDo(state, toDo))}>
+      <ActionButton onClick={deleteAction ? deleteAction : () => dispatch(removeToDo(state, toDo))}>
         <DeleteOutline />
       </ActionButton>
-
-      {/* <ActionButton onClick={onClick} >
-        {icon}
-      </ActionButton> */}
     </ActionArea>
   )
 }

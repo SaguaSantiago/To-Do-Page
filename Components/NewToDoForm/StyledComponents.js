@@ -12,7 +12,7 @@ export const FormPaper = styled(Paper)(
         z-index: 1;
         padding: 0 10px;
         overflow: hidden;
-        transition: all 1s;
+        transition: all .4s;
         max-width: 700px;
     `,
 )

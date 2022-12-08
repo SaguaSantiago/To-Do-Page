@@ -23,6 +23,10 @@ export const RegisterValidation = yup.object({
 })
 
 export const NewToDoFormValidation = yup.object({
-  title: yup.string().required('Es necesario que tenga un título'),
+  title: yup
+    .string()
+    .required('Es necesario que tenga un título')
+    .max(48, 'El titulo debe contener menos de 48 caracteres')
+    .min(5, 'el titulo debe contener al menos 5 caracteres'),
   desc: yup.string().required('Añade una pequeña descripción'),
 })

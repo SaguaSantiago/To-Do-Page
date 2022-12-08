@@ -1,4 +1,4 @@
-import { TextField, Paper, IconButton } from '@mui/material'
+import { styled, TextField, Paper, IconButton } from '@mui/material'
 
 export const SearchTextfield = styled(TextField)`
   & .MuiOutlinedInput-root {
@@ -14,6 +14,7 @@ export const PaperContainer = styled(Paper)(
     min-width: 320px;
     width: 30%;
     margin: 50px auto;
+    margin-bottom: 10px;
     padding: 0 40px;
     border-radius: 10px;
     height: 80px;

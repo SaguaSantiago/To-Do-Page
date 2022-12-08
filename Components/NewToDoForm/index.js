@@ -1,17 +1,19 @@
-import { Grid, ButtonGroup } from '@mui/material'
 import CustomTextfield from 'Components/CustomComponents/CustomTextfield'
+
+import { FormPaper, StyledButton } from './StyledComponents'
+import { Grid, ButtonGroup } from '@mui/material'
+
 import { Form, Formik } from 'formik'
+import { NewToDoFormValidation } from 'validation'
+
 import { useDispatch, useSelector } from 'react-redux'
 import { addToDo } from 'redux/Actions/toDo'
-import { sharingInformationService } from 'services/sharing-information'
-import { NewToDoFormValidation } from 'validation'
-import { FormPaper, StyledButton } from './StyledComponents'
 
-
+import { createToDoService } from 'services/sharing-information'
 
 export default function NewToDoForm({ open }) {
-  const close = () => sharingInformationService.setSubject(false)
-  const state = useSelector(state=> state.toDos)
+  const close = () => createToDoService.setSubject(false)
+  const state = useSelector((state) => state.toDos)
   const dispatch = useDispatch()
   return (
     <FormPaper open={open}>

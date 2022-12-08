@@ -1,33 +1,11 @@
-import { Grid, IconButton, Paper, styled, Typography } from '@mui/material'
+import { Grid, Paper, Typography } from '@mui/material'
+import { StyledDiv, StyledPaper, ToDoTitle } from './styledComponents'
 import styles from './ToDo.module.css'
 import useToggle from 'hooks/useToggle'
 import ActionPaper from './ActionArea'
-function StyledDiv({ children, ...rest }) {
-  return (
-    <div {...rest} className={styles.StyledDiv}>
-      {children}
-    </div>
-  )
-}
-
-function StyledPaper({ children, className, ...rest }) {
-  return (
-    <Paper className={className + ' ' + styles.StyledPaper} {...rest}>
-      {children}
-    </Paper>
-  )
-}
-
-function ToDoTitle({ children, ...rest }) {
-  return (
-    <Typography className={styles.ToDoTitle} {...rest}>
-      {children}
-    </Typography>
-  )
-}
 
 export default function ToDo(props) {
-  const { title, desc, priority, id } = props
+  const { title, desc, priority, id, deleteAction } = props
   const [toDoOpen, setToDoOpen] = useToggle()
   return (
     <Grid container justifyContent='center' sx={{ width: '100%' }}>
@@ -43,6 +21,7 @@ export default function ToDo(props) {
                 toDo={props}
                 isOpen={toDoOpen}
                 openAction={setToDoOpen}
+                deleteAction={deleteAction}
               />
             </Grid>
           </StyledPaper>
@@ -53,7 +32,7 @@ export default function ToDo(props) {
             sx={{
               borderTopLeftRadius: '0',
               borderTopRigthRadius: '0',
-              transition: 'max-height 1s',
+              transition: 'all 1s',
             }}
             elevation={1}
           >

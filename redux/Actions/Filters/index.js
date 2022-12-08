@@ -11,3 +11,9 @@ export const setFilterPriority = () => {
     type: ActionTypes.FILTER_PRIORITY,
   }
 }
+
+export const setFilterReady = () => {
+  return {
+    type: ActionTypes.FILTER_READY
+  }
+}

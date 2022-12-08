@@ -8,6 +8,8 @@ const filters = (state = initialState, { type }) => {
       return 'all'
     case ActionTypes.FILTER_PRIORITY:
       return 'priority'
+    case ActionTypes.FILTER_READY:
+      return 'ready'
     default:
       return state
   }

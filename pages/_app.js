@@ -7,7 +7,7 @@ import { ThemeProvider } from '@mui/material'
 import { Provider } from 'react-redux'
 import { store } from 'redux/Store'
 
-import '../styles/colors.css'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function MyApp({ Component, pageProps }) {
   return (

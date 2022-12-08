@@ -1,46 +1,9 @@
 .ToDoClosed {
-    max-height: 0;
-    overflow: hidden;
+  max-height: 0;
+  overflow: hidden;
 }
-
-.StyledDiv {
-    display: flex;
-    justify-content: center;
-    gap: 1%;
-    width: 100%;
-}
-
-.StyledPaper {
-    background-color: #a8dadc;
-    position: relative;
-    height: 50px;
-    min-width: 288px;
-    transition: width 1s;
-    width: 100%;
-    left: auto;
-    right: auto;
-}
-
-.ToDoTitle {
-    margin-left: 10px;
-    font-weight: 600;
-}
-
-.ActionArea {
-    margin-left: auto;
-    display: flex;
-    justify-content: flex-end;
-    gap: 2px;
-}
-
-.ActionButton {
-    height: 30px;
-    width: 30px;
-    background-color: var(--white-fondo);
-    margin-left: 5px;
-}
-
 .ToDoOpen {
-    max-height: 500px;
-    overflow: hidden;
+  max-height: 500px;
+  overflow: hidden;
+  padding: 7px;
 }

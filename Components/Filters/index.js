@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { setFilterAll, setFilterPriority } from 'redux/Actions/Filters'
+import { setFilterAll, setFilterPriority, setFilterReady } from 'redux/Actions/Filters'
 
 import { Avatar, Grid, Typography } from '@mui/material'
+import CheckCircleOutline from '@mui/icons-material/CheckCircleOutline'
 import SortIcon from '@mui/icons-material/Sort'
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder'
 
@@ -19,7 +20,7 @@ export default function Filters() {
           justifyContent='space-between'
           alignItems='center'
         >
-          <Grid item xs={5}>
+          <Grid item xs={3.5}>
             <FilterButton onClick={() => dispatch(setFilterAll())} fullwidth>
               <Avatar sx={{ height: '45px', width: '45px', backgroundColor: '#fff' }}>
                 <SortIcon sx={{ color: '#444' }} />
@@ -29,13 +30,23 @@ export default function Filters() {
               </Typography>
             </FilterButton>
           </Grid>
-          <Grid item xs={5}>
+          <Grid item xs={3.5}>
             <FilterButton onClick={() => dispatch(setFilterPriority())} fullwidth>
               <Avatar sx={{ height: '45px', width: '45px', backgroundColor: '#fff' }}>
                 <BookmarkBorderIcon sx={{ color: '#444' }} />
               </Avatar>
               <Typography variant='' color='#fff'>
                 Prioritarios
+              </Typography>
+            </FilterButton>
+          </Grid>
+          <Grid item xs={3.5}>
+            <FilterButton onClick={() => dispatch(setFilterReady())} fullwidth>
+              <Avatar sx={{ height: '45px', width: '45px', backgroundColor: '#fff' }}>
+                <CheckCircleOutline sx={{ color: '#444' }} />
+              </Avatar>
+              <Typography variant='' color='#fff'>
+                Listos
               </Typography>
             </FilterButton>
           </Grid>

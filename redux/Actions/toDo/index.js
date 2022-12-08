@@ -1,11 +1,10 @@
-import { MovingSharp } from '@mui/icons-material'
+import { toast } from 'react-toastify'
 import { ActionTypes } from 'redux/ActionTypes'
 import { generateRandomId } from 'services/generateRandomId'
 import { SaveInStorage } from 'Utilities/SaveInStorage'
 
 //start app
 export const StartApp = (newState) => {
-  console.log(newState)
   return {
     type: ActionTypes.START_APP,
     payload: newState,
@@ -38,9 +37,12 @@ export const addToDo = (state, toDo) => {
     try {
       const id = generateRandomId()
       const newToDo = { ...toDo, id, priority: false }
+      const newState = { ...state, allTodos: [...state.allTodos, newToDo] }
       dispatch(addToDoSuccess(newToDo))
-      SaveInStorage(state, newToDo)
+      toast.success(`Una nueva tarea ha sido creada`)
+      SaveInStorage(newState)
     } catch (msg) {
+      toast.error('Ha sucedido un error al crear la Tarea')
       console.log(msg)
     }
   }
@@ -70,8 +72,11 @@ export const removeToDo = (state, toDo) => {
     dispatch(removeToDoRequest())
     try {
       const allTodos = state.allTodos.filter((t) => t.id !== toDo.id)
-      const priorities = state.priorities.filter((t) => t.id !== toDo)
-      dispatch(removeToDoSuccess({ allTodos, priorities }))
+      const priorities = state.priorities.filter((t) => t.id !== toDo.id)
+      const ready = state.ready.filter((t) => t.id !== toDo.id)
+      const newState = { allTodos, priorities, ready }
+      dispatch(removeToDoSuccess(newState))
+      SaveInStorage({ ...state, ...newState })
     } catch (msg) {
       console.log(msg)
     }
@@ -144,5 +149,71 @@ export const removePriority = (state, toDo) => {
     } catch (msg) {
       console.log(msg)
     }
+  }
+}
+
+export const setReadyRequest = () => {
+  return {
+    type: ActionTypes.SET_READY_REQUEST,
+  }
+}
+
+export const setReadySuccess = (ToDo) => {
+  return {
+    type: ActionTypes.SET_READY_SUCCESS,
+    payload: ToDo,
+  }
+}
+
+export const setReadyFailure = () => {
+  return {
+    type: ActionTypes.SET_READY_FAILURE,
+  }
+}
+
+export const setReady = (state, ToDo) => {
+  return async (dispatch) => {
+    dispatch(setReadyRequest())
+    try {
+      const { priorities, ready, allTodos } = state
+      let newState
+      let newReady
+      let newAllTodos
+      let newPriorities
+
+      if (ready.find(({ id }) => id === ToDo.id)) {
+        newReady = ready.filter(({ id }) => id !== ToDo.id)
+        newAllTodos = [...allTodos, ToDo]
+        newPriorities = newAllTodos.filter(({ priority }) => priority === true)
+        newState = { priorities: newPriorities, allTodos: newAllTodos, ready: newReady }
+        toast.success('Tarea restaurada con exito')
+      } else {
+        newPriorities = priorities.filter(({ id }) => id !== ToDo.id)
+        newAllTodos = allTodos.filter(({ id }) => id !== ToDo.id)
+        newReady = [...ready, ToDo]
+        newState = { priorities: newPriorities, allTodos: newAllTodos, ready: newReady }
+        toast.success('Una Tarea ha sido completada')
+      }
+      SaveInStorage({ ...state, ...newState })
+      dispatch(setReadySuccess(newState))
+    } catch (msg) {
+      console.log(msg)
+    }
+  }
+}
+
+export const searcheToDos = (textSearched, state) => {
+  if (textSearched === '') {
+    return {
+      type: ActionTypes.SEARCHE_TODOS,
+      payload: {},
+    }
+  }
+  const allTodos = state.allTodos.filter(({ title }) => title.includes(textSearched))
+  const ready = state.ready.filter(({ title }) => title.includes(textSearched))
+  const priorities = allTodos.filter((toDo) => toDo.priority === true)
+  return {
+    type: ActionTypes.SEARCHE_TODOS,
+    payload: { allTodos, ready, priorities },
   }
 }
