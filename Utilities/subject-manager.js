@@ -1,6 +1,6 @@
 import { Subject } from 'rxjs'
 
-export class SubjectManager {
+export default class SubjectManager {
   subject$ = new Subject()
 
   getSubject() {
