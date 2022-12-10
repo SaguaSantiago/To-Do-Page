@@ -8,6 +8,7 @@ import { Provider } from 'react-redux'
 import { store } from 'redux/Store'
 
 import 'react-toastify/dist/ReactToastify.css'
+import { Analytics } from '@mui/icons-material'
 
 export default function MyApp({ Component, pageProps }) {
   return (
@@ -15,6 +16,7 @@ export default function MyApp({ Component, pageProps }) {
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <Component {...pageProps} />
+          <Analytics />
         </ThemeProvider>
       </Provider>
     </>

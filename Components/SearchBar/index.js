@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Grid } from '@mui/material'
+import { Grid, Tooltip } from '@mui/material'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 
 import { createToDoService } from 'services/sharing-information'
@@ -41,9 +41,11 @@ export default function SearchBar() {
             </div>
           </Grid>
           <Grid item>
-            <StyledIconButton onClick={addToDo} sx={{ borderRadius: '50%' }}>
-              <AddCircleOutlineIcon />
-            </StyledIconButton>
+            <Tooltip title='añadir tarea'>
+              <StyledIconButton onClick={addToDo} sx={{ borderRadius: '50%' }}>
+                <AddCircleOutlineIcon />
+              </StyledIconButton>
+            </Tooltip>
           </Grid>
         </Grid>
       </PaperContainer>
