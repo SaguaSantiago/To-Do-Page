@@ -1,7 +1,9 @@
-import { toast } from 'react-toastify'
 import { ActionTypes } from 'redux/ActionTypes'
+
 import { generateRandomId } from 'services/generateRandomId'
-import { SaveInStorage } from 'Utilities/SaveInStorage'
+import { SaveInStorage } from 'services/SaveInStorage'
+
+import { toast } from 'react-toastify'
 
 //start app
 export const StartApp = (newState) => {
@@ -209,8 +211,8 @@ export const searcheToDos = (textSearched, state) => {
       payload: {},
     }
   }
-  const allTodos = state.allTodos.filter(({ title }) => title.includes(textSearched))
-  const ready = state.ready.filter(({ title }) => title.includes(textSearched))
+  const allTodos = state.allTodos.filter(({ title }) => title.toUpperCase().includes(textSearched))
+  const ready = state.ready.filter(({ title }) => title.toUpperCase().includes(textSearched))
   const priorities = allTodos.filter((toDo) => toDo.priority === true)
   return {
     type: ActionTypes.SEARCHE_TODOS,

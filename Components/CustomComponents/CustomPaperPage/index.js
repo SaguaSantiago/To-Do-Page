@@ -1,7 +1,10 @@
-import { Grid, Paper, styled } from '@mui/material'
-import CustomButton from 'Components/CustomComponents/CustomButton'
-import { Formik, Form } from 'formik'
 import Image from 'next/image'
+
+import CustomButton from 'Components/CustomComponents/CustomButton'
+
+import { Formik, Form } from 'formik'
+
+import { Grid, Paper, styled } from '@mui/material'
 
 const StyledPaper = styled(Paper)(
   (props) => `

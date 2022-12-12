@@ -1,10 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { setFilterAll, setFilterPriority, setFilterReady } from 'redux/Actions/Filters'
-
 import { Avatar, Grid, Typography } from '@mui/material'
 import CheckCircleOutline from '@mui/icons-material/CheckCircleOutline'
 import SortIcon from '@mui/icons-material/Sort'
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder'
+
+import { useDispatch, useSelector } from 'react-redux'
+import { setFilterAll, setFilterPriority, setFilterReady } from 'redux/Actions/Filters'
 
 import { FilterButton, StyledPaper, WhiteLine } from './StyledComponents'
 

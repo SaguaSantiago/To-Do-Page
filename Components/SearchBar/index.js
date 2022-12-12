@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
+import { createToDoService } from 'services/sharing-information'
+
 import { Grid, Tooltip } from '@mui/material'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
-
-import { createToDoService } from 'services/sharing-information'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { searcheToDos } from 'redux/Actions/toDo'
@@ -32,7 +32,7 @@ export default function SearchBar() {
                 autoComplete='off'
                 defaultValue={searchTextfield}
                 onChange={(e) => {
-                  dispatch(searcheToDos(e.target.value, state))
+                  dispatch(searcheToDos(e.target.value.toUpperCase(), state))
                   setSearchTextfield(e.target.value)
                 }}
                 placeholder='SEARCH'

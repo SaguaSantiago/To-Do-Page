@@ -1,11 +1,12 @@
+import { Tooltip } from '@mui/material'
 import { DeleteOutline, ExpandMore, CheckCircleOutline, ExpandLess } from '@mui/icons-material'
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder'
 import BookmarkIcon from '@mui/icons-material/Bookmark'
-import { addPriority, removePriority, removeToDo, setReady } from 'redux/Actions/toDo'
-import { ActionButton, ActionArea } from '../styledComponents'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { Tooltip } from '@mui/material'
+import { addPriority, removePriority, removeToDo, setReady } from 'redux/Actions/toDo'
+
+import { ActionButton, ActionArea } from '../styledComponents'
 
 export default function ActionPaper({ openAction, isOpen, priority, toDo, deleteAction }) {
   const dispatch = useDispatch()

@@ -1,6 +1,7 @@
+import { createToDoService } from 'services/sharing-information'
+
 import CustomTextfield from 'Components/CustomComponents/CustomTextfield'
 
-import { FormPaper, StyledButton } from './StyledComponents'
 import { Grid, ButtonGroup } from '@mui/material'
 
 import { Form, Formik } from 'formik'
@@ -9,7 +10,7 @@ import { NewToDoFormValidation } from 'validation'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToDo } from 'redux/Actions/toDo'
 
-import { createToDoService } from 'services/sharing-information'
+import { FormPaper, StyledButton } from './StyledComponents'
 
 export default function NewToDoForm({ open }) {
   const close = () => createToDoService.setSubject(false)

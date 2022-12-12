@@ -1,8 +1,11 @@
-import { Grid, Paper, Typography } from '@mui/material'
-import { StyledDiv, StyledPaper, ToDoTitle } from './styledComponents'
 import styles from './ToDo.module.css'
-import useToggle from 'hooks/useToggle'
+
+import { Grid, Paper, Typography } from '@mui/material'
+
+import { StyledDiv, StyledPaper, ToDoTitle } from './styledComponents'
 import ActionPaper from './ActionArea'
+
+import useToggle from 'hooks/useToggle'
 
 export default function ToDo(props) {
   const { title, desc, priority, id, deleteAction } = props

@@ -1,8 +1,10 @@
-import CustomPaperPage from 'Components/CustomComponents/CustomPaperPage'
-import CustomTextfield from 'Components/CustomComponents/CustomTextfield'
 import { LOGINFORMOBJECTS } from 'objects'
 import { LoginValidation } from 'validation'
+
 import LoginImage from './../public/assets/undraw_chore_list_re_2lq8.svg'
+
+import CustomPaperPage from 'Components/CustomComponents/CustomPaperPage'
+import CustomTextfield from 'Components/CustomComponents/CustomTextfield'
 
 export default function Login() {
   return (

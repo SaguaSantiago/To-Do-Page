@@ -1,14 +1,15 @@
 import React from 'react'
 
 import '../styles/globals.css'
-import { theme } from 'styles/theme'
+import 'react-toastify/dist/ReactToastify.css'
+
 import { ThemeProvider } from '@mui/material'
+import { theme } from 'styles/theme'
 
 import { Provider } from 'react-redux'
 import { store } from 'redux/Store'
 
-import 'react-toastify/dist/ReactToastify.css'
-import { Analytics } from '@mui/icons-material'
+import { Analytics } from '@vercel/analytics'
 
 export default function MyApp({ Component, pageProps }) {
   return (
