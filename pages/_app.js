@@ -9,7 +9,7 @@ import { theme } from 'styles/theme'
 import { Provider } from 'react-redux'
 import { store } from 'redux/Store'
 
-import { Analytics } from '@vercel/analytics'
+import { Analytics } from '@vercel/analytics/react'
 
 export default function MyApp({ Component, pageProps }) {
   return (
