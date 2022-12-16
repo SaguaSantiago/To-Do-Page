@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addToDo } from 'redux/Actions/toDo'
 
 import { FormPaper, StyledButton } from './StyledComponents'
-
 export default function NewToDoForm({ open }) {
   const close = () => createToDoService.setSubject(false)
   const state = useSelector((state) => state.toDos)

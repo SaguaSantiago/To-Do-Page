@@ -1,7 +1,7 @@
 import { ActionTypes } from 'redux/ActionTypes'
 
 import { generateRandomId } from 'services/generateRandomId'
-import { SaveInStorage } from 'services/SaveInStorage'
+import { SaveInStorage } from 'Utilities/SaveInStorage'
 
 import { toast } from 'react-toastify'
 

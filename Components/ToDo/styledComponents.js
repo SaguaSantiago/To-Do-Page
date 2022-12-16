@@ -22,6 +22,9 @@ export const ToDoTitle = styled(Typography)`
   margin-left: 10px;
   font-weight: 600;
   user-select: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 `
 
 export const ActionArea = styled(Grid)`
@@ -36,4 +39,12 @@ export const ActionButton = styled(IconButton)`
   width: 30px;
   background-color: #f1f1f1;
   margin-left: 5px;
+`
+
+export const ToDoTitleInDescription = styled('p')`
+  text-align: center;
+  overflow-wrap: break-word;
+  padding: 0 10px;
+  font-weight: 500;
+  font-size: 17px;
 `
