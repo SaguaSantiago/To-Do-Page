@@ -42,17 +42,7 @@ export default function ToDo(props) {
             }}
             elevation={1}
           >
-            <p
-              style={{
-                textAlign: 'center',
-                overflowWrap: 'break-word',
-                padding: '0 10px',
-                fontWeight: '500',
-                fontSize: '17px',
-              }}
-            >
-              {title}
-            </p>
+            <ToDoTitleInDescription>{title}</ToDoTitleInDescription>
             <p style={{ textAlign: 'center' }}>{desc}</p>
           </Paper>
         </Grid>
