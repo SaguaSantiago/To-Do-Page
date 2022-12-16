@@ -2,7 +2,7 @@ import styles from './ToDo.module.css'
 
 import { Grid, Paper, Tooltip, Typography } from '@mui/material'
 
-import { StyledDiv, StyledPaper, ToDoTitle } from './styledComponents'
+import { StyledDiv, StyledPaper, ToDoTitle, ToDoTitleInDescription } from './styledComponents'
 import ActionPaper from './ActionArea'
 
 import useToggle from 'hooks/useToggle'
