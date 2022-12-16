@@ -9,7 +9,7 @@ import { theme } from 'styles/theme'
 import { Provider } from 'react-redux'
 import { store } from 'redux/Store'
 
-import { Analytics } from '@vercel/analytics/react'
+// import { Analytics } from '@vercel/analytics/react'
 
 export default function MyApp({ Component, pageProps }) {
   return (
@@ -17,7 +17,7 @@ export default function MyApp({ Component, pageProps }) {
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <Component {...pageProps} />
-          <Analytics />
+          {/* <Analytics /> */}
         </ThemeProvider>
       </Provider>
     </>

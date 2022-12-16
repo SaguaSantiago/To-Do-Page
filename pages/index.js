@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
 
+import styles from './../styles/homePage.module.css'
+
 import useToggle from 'hooks/useToggle'
 import useStartApp from 'hooks/useStartApp'
 
@@ -32,6 +34,9 @@ const ToDoList = styled(Grid)`
   gap: 15px;
   overflow: auto;
   max-height: calc(70vh - 145px);
+  root::webkit-scrollbar {
+    background-color: red;
+  }
 `
 
 export default function MainRoute() {
@@ -61,7 +66,7 @@ export default function MainRoute() {
             <Grid item xs={12}>
               <Filters />
             </Grid>
-            <ToDoList item xs={11}>
+            <ToDoList className={styles.todoList} item xs={11}>
               {toDos.searched.allTodos !== undefined
                 ? toDos.searched.allTodos.map((props) => <ToDo key={props.id} {...props} />)
                 : toDos.allTodos &&

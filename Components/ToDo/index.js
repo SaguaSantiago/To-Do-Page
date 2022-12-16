@@ -1,6 +1,6 @@
 import styles from './ToDo.module.css'
 
-import { Grid, Paper, Typography } from '@mui/material'
+import { Grid, Paper, Tooltip, Typography } from '@mui/material'
 
 import { StyledDiv, StyledPaper, ToDoTitle } from './styledComponents'
 import ActionPaper from './ActionArea'
@@ -16,8 +16,10 @@ export default function ToDo(props) {
         <StyledDiv>
           <StyledPaper sx={{ padding: '0 10px' }}>
             <Grid sx={{ height: '100%' }} container alignItems='center'>
-              <Grid item>
-                <ToDoTitle>{title}</ToDoTitle>
+              <Grid item xs={5} sm={6}>
+                <Tooltip title={title}>
+                  <ToDoTitle fullwidth>{title}</ToDoTitle>
+                </Tooltip>
               </Grid>
               <ActionPaper
                 priority={priority}
@@ -36,10 +38,12 @@ export default function ToDo(props) {
               borderTopLeftRadius: '0',
               borderTopRigthRadius: '0',
               transition: 'all 1s',
+              maxWidth: '100%',
             }}
             elevation={1}
           >
-            <Typography paragraph>{desc}</Typography>
+            <ToDoTitleInDescription>{title}</ToDoTitleInDescription>
+            <p style={{ textAlign: 'center' }}>{desc}</p>
           </Paper>
         </Grid>
       </Grid>
