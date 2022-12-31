@@ -1,7 +1,10 @@
 import { Tooltip } from '@mui/material'
-import { DeleteOutline, ExpandMore, CheckCircleOutline, ExpandLess } from '@mui/icons-material'
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder'
 import BookmarkIcon from '@mui/icons-material/Bookmark'
+import ExpandLess from '@mui/icons-material/ExpandLess'
+import CheckCircleOutline from '@mui/icons-material/CheckCircleOutline'
+import ExpandMore from '@mui/icons-material/ExpandMore'
+import DeleteOutline from '@mui/icons-material/DeleteOutline'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { addPriority, removePriority, removeToDo, setReady } from 'redux/Actions/toDo'
