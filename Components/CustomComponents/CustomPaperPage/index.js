@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 import CustomButton from 'Components/CustomComponents/CustomButton'
 
 import { Formik, Form } from 'formik'
@@ -33,7 +31,11 @@ export default function CustomPaperPage({ image, isLogin, children, validationSc
           <Grid sx={{ height: '100vh' }} container justifyContent='center' alignItems='center'>
             <Grid item xs={12} md={6}>
               <ImgContainer>
-                <Image src={image} layout='fill' objectFit='contain' objectPosition='center' />
+                <img
+                  src={image}
+                  style={{ width: '100%', height: '100%' }}
+                  objectPosition='center'
+                />
               </ImgContainer>
             </Grid>
             <Grid sx={{ padding: '0 10%' }} item xs={12} md={6}>
